@@ -1,0 +1,53 @@
+// Takes a Binary Tree as input and returns a Boolean value.
+public boolean booleanBST(Node node){
+  	if (node == node)
+			return True;
+		else 
+			return false;
+	}
+
+
+
+// Checks if the Binary tree is a Binary Search tree or not.
+public boolean CheckBST(Node node , int min , int max){
+
+    if(node.data < min || node.data > max)
+    	return false;
+  
+    boolean leftIsBst = false;
+  
+    if(node.left != null)
+    {
+        if(node.left.data < node.data)
+        {
+            leftIsBst = CheckBST(node.left , min , node.data);
+         }
+        else
+        {
+            leftIsBst = false;
+        }
+    }else 
+    {
+        leftIsBst = true;
+    }
+
+    boolean rightIsBst = false;
+    
+    if(node.right != null)
+    {
+       
+        if(node.right.data >= node.data)
+        {
+            rightIsBst = CheckBST(node.right , node.data+1 , max);
+        }else
+        {
+            rightIsBst = false;
+        }
+    }else
+    {
+        rightIsBst = true;
+    }
+
+    return (leftIsBst && rightIsBst);
+}
+
